@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2023 Manuel Weiss <manuel.Weiss@bht-berlin.de>
+#
+# SPDX-License-Identifier: MIT
+
+include hwdaq/*.py
+include hwdaq/*.pyx
+include hwdaq/*.pyxbld
+include hwdaq/cpp/*.cpp
+include hwdaq/cpp/*.hpp
+include hwdaq/cpp/*.h
+include hwdaq/cpp/CMakeLists.txt
+
