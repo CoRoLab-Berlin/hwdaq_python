@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: 2023 Manuel Weiss <mweiss@bht-berlin.de>
+#
+# SPDX-License-Identifier: MIT
+
+"""
+As an additional option for cases in which installing the package using pip is not possible, this file *might* make
+it possible to compile and import the C++ version on the fly.
+
+    sys.path.append('path/to/hwdaq/')
+    import pyximport
+    pyximport.install()
+    from hwdaq import HWDAQ
+"""
+
+from pathlib import Path
+import numpy as np
+
+
+def make_ext(modname, pyxfilename):
+    from distutils.extension import Extension
+
+    p = Path(__file__).resolve().parent
+    return Extension(
+        name=modname,
+        sources=[pyxfilename, 
+        'cpp/hwdaq.cpp', 
+        ],
+        include_dirs=[str(p), np.get_include()],
+        language="c++",        
+    )
