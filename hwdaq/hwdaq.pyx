@@ -46,4 +46,5 @@ cdef class HWDAQ:
     
 
     def setDAC(self, vout):
+        vout = np.clip(vout, 0, 10)
         self.c_obj.setDAC(<double*> np.PyArray_DATA(vout))
